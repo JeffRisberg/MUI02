@@ -1,9 +1,9 @@
 {
-  "name": "MUI01",
+  "name": "mui01",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^3.9.0",
+    "@material-ui/core": "^3.9.1",
     "jss": "^9.3.3",
     "jss-preset-default": "^4.0.1",
     "material-ui": "^0.20.2",
@@ -27,5 +27,18 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "description": "Material To-do List",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeffRisberg/MUI02.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeffRisberg/MUI02/issues"
+  },
+  "homepage": "https://github.com/JeffRisberg/MUI02#readme"
 }
