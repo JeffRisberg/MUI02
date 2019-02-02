@@ -6,7 +6,7 @@ const styles = {
     root: {
         marginTop: "10px",
         background: "#f44"
-    },
+    }
 };
 
 function Footer(props) {
