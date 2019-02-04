@@ -33,5 +33,4 @@ const App = props => (
   </div>
 );
 
-// export default App;
 export default withRoot(withStyles(styles)(App));
