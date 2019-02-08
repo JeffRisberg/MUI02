@@ -30,6 +30,7 @@
     "express": "^4.16.4",
     "file-loader": "^2.0.0",
     "nconf": "^0.10.0",
+    "nedb": "^1.8.0",
     "react-addons-test-utils": "^15.6.2",
     "react-hot-loader": "^4.6.3",
     "webpack": "^4.28.4",
@@ -39,12 +40,6 @@
     "type": "git",
     "url": "git+https://github.com/JeffRisberg/MUI02.git"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JeffRisberg/MUI02/issues"
-  },
-  "homepage": "https://github.com/JeffRisberg/MUI02#readme",
   "browserslist": [
     ">0.2%",
     "not dead",
