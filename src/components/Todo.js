@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormControlLabel } from 'material-ui/Form';
-import Checkbox from 'material-ui/Checkbox';
+import { FormControlLabel } from '@material-ui/Form';
+import Checkbox from '@material-ui/Checkbox';
 
 const Todo = ({ onClick, completed, text }) => (
   <FormControlLabel
