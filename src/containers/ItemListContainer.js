@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import log from 'logger';
 import { queryItems, toggleItem } from '../../actions/items';
-import { AddItemComponent, ItemListComponent } from '../Items';
+import { AddItemComponent, ItemListComponent } from '../components/Items';
 import './Items.scss';
 
 class ItemListContainer extends Component {

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-class Home extends Component {
+class Splash extends Component {
 
   render() {
     return (
       <div className={this.props.className}>
-        <h2>RE03 Example</h2>
+        <h2>MUI03 Example</h2>
 
         <div className="row">
           <div className="col-md-4">
@@ -23,4 +23,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Splash;

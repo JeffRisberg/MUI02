@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
-import AppRoot from './AppRoot';
+import AppRoot from './App';
 import configureStore from './configureStore';
 
 const history = createHistory({ basename: '/' });
