@@ -5,14 +5,14 @@ var app = express();
 
 var mocks = globSync('./mocks/**/*.js', {cwd: __dirname}).map(require);
 
-const PATH_STYLES = path.resolve(__dirname, '../app/styles');
+const PATH_STYLES = path.resolve(__dirname, '../ssrc/styles');
 const PATH_DIST = path.resolve(__dirname, '../dist');
 
 app.use('/styles', express.static(PATH_STYLES));
 app.use(express.static(PATH_DIST));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../app/index.html'));
+    res.sendFile(path.resolve(__dirname, '../public/index.html'));
 });
 
 var nedb = require('nedb');

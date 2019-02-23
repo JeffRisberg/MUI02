@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import ItemListContainer from '../components/Items/ItemListContainer';
-import ItemFormContainer from '../components/Items/ItemFormContainer';
+import ItemListContainer from '../containers/Items/ItemListContainer';
+import ItemFormContainer from '../containers/Items/ItemFormContainer';
 
 class Items extends Component {
 

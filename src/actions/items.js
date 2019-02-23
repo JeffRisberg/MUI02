@@ -1,6 +1,5 @@
 import fetch from 'cross-fetch';
 import { push } from 'react-router-redux';
-import { initialize } from 'redux-form';
 import { ActionTypes as types, forms } from '../constants';
 
 export const queryItems = () => {
@@ -31,7 +30,7 @@ export const fetchItem = (id) => {
     return fetch('/api/items/' + id, {})
       .then(response => response.json())
       .then((json) => {
-        dispatch(initialize(forms.Item, json.data));
+        //dispatch(initialize(forms.Item, json.data));
         dispatch({
           type: types.FETCH_ITEMS_SUCCESS,
           items: [json.data]

@@ -17,5 +17,5 @@ ReactDOM.render(
       <Route path="/" component={AppRoot}/>
     </ConnectedRouter>
   </Provider>,
-  document.getElementById('app-root')
+  document.getElementById('container')
 );
