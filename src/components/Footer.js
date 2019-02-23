@@ -4,8 +4,9 @@ import {withStyles} from '@material-ui/core/styles';
 const styles = {
     root: {
         marginTop: "10px",
-        background: "#f44"
-    }
+        padding: "5px",
+        background: "#eee"
+    },
 };
 
 function Footer(props) {
@@ -13,11 +14,9 @@ function Footer(props) {
     const spacing = 16;
 
     return (
-        <p className={classes.root}>
-            //<FilterLink filter="SHOW_ALL">All</FilterLink>
-            //<FilterLink filter="SHOW_ACTIVE">Active</FilterLink>
-            //<FilterLink filter="SHOW_COMPLETED">Completed</FilterLink>
-        </p>
+        <div className={classes.root}>
+            MUI02
+        </div>
     );
 }
 

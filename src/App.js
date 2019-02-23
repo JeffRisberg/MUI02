@@ -47,6 +47,8 @@ const theme = createMuiTheme({
 class App extends Component {
 
     render() {
+        const {classes} = this.props;
+
         return (
             <MuiThemeProvider theme={theme}>
                 <Paper className={classes.app}>
