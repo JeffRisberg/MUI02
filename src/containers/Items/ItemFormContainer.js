@@ -3,22 +3,6 @@ import {connect} from 'react-redux';
 import {deleteItem, fetchItem, saveItem} from '../../actions/items';
 import ItemFormComponent from '../../components/Items/ItemFormComponent';
 
-const validate = (values) => {
-    const errors = {};
-
-    if (!values.name || values.name.trim().length < 4) {
-        errors.name = 'Please enter a name of at least 4 characters.';
-    }
-    if (!values.value) {
-        errors.value = 'Please enter a value.';
-    }
-    if (!values.description) {
-        errors.description = 'Please enter a description.';
-    }
-
-    return errors;
-};
-
 class ItemFormContainer extends Component {
     render() {
         return (<div>
