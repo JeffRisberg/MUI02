@@ -11,8 +11,6 @@ import Events from './views/Events';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 
-import {withStyles} from '@material-ui/core/styles';
-
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
 import lightBlue from '@material-ui/core/colors/lightBlue';
@@ -56,37 +54,39 @@ class App extends Component {
       return (
          <MuiThemeProvider theme={theme}>
             <Paper className={classes.app}>
-               <AppBar position="static">
-                  <Toolbar>
-                     <Button>
-                        <NavLink className={classes.navLink} to='/#/home'>
-                           Home
-                        </NavLink>
-                     </Button>
-                     <Button>
-                        <NavLink className={classes.navLink} to='/#/items'>
-                           Items
-                        </NavLink>
-                     </Button>
-                     <Button>
-                        <NavLink className={classes.navLink} to='/#/events'>
-                           Events
-                        </NavLink>
-                     </Button>
-                  </Toolbar>
-               </AppBar>
                <Router>
-                  <Switch>
-                     <Route path="/" exact component={Splash}/>
-                     <Route path="/items" component={Items}/>
-                     <Route path="/events" component={Events}/>
-                  </Switch>
-               </Router>
-               <Footer/>
+                  <AppBar position="static">
+                     <Toolbar>
+                        <Button>
+                           <NavLink className={classes.navLink} to='/'>
+                              Home
+                           </NavLink>
+                        </Button>
+                        <Button>
+                           <NavLink className={classes.navLink} to='/items'>
+                              Items
+                           </NavLink>
+                        </Button>
+                        <Button>
+                           <NavLink className={classes.navLink} to='/events'>
+                              Events
+                           </NavLink>
+                        </Button>
+                     </Toolbar>
+                  </AppBar>
+                  <Router>
+                     <Router>
+                        <Switch>
+                           <Route path="/" exact component={Splash}/>
+                           <Route path="/items" component={Items}/>
+                           <Route path="/events" component={Events}/>
+                        </Switch>
+                     </Router>
+                     <Footer/>
             </Paper>
          </MuiThemeProvider>
-      )
+   )
    }
-}
+   }
 
-export default withStyles(styles)(App);
+   export default withStyles(styles)(App);
