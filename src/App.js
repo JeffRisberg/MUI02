@@ -74,19 +74,19 @@ class App extends Component {
                         </Button>
                      </Toolbar>
                   </AppBar>
-                  <Router>
-                     <Router>
-                        <Switch>
-                           <Route path="/" exact component={Splash}/>
-                           <Route path="/items" component={Items}/>
-                           <Route path="/events" component={Events}/>
-                        </Switch>
-                     </Router>
-                     <Footer/>
+               </Router>
+               <Router>
+                  <Switch>
+                     <Route path="/" exact component={Splash}/>
+                     <Route path="/items" component={Items}/>
+                     <Route path="/events" component={Events}/>
+                  </Switch>
+               </Router>
+               <Footer/>
             </Paper>
          </MuiThemeProvider>
-   )
+      )
    }
-   }
+}
 
-   export default withStyles(styles)(App);
+export default withStyles(styles)(App);
