@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Splash from './views/Splash'
 import Items from './views/Items';
 import Events from './views/Events';
+import {withStyles} from '@material-ui/core/styles';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
