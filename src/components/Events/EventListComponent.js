@@ -36,13 +36,11 @@ class EventListComponent extends Component {
             <tr key={key} className="events__event">
                <td>
                   <Link to={'/events/detail/' + id} className='btn btn-default'>View</Link>
-                  {' '}
-                  <div style={{textDecoration: event.completed ? 'line-through' : 'none'}}
-                       onClick={() => this.props.toggleEvent(event)}>
-                     {event.text}
-                  </div>
                </td>
-               <td>{' '}</td>
+               <td style={{textDecoration: event.completed ? 'line-through' : 'none'}}
+                   onClick={() => this.props.toggleEvent(event)}>
+                  {event.text}
+               </td>
                <td>
                   ({event.time} hours)
                </td>
@@ -52,7 +50,18 @@ class EventListComponent extends Component {
 
       return (
          <table>
+            <thead>
+            <tr>
+               <th>{''}</th>
+               <th>Name</th>
+               <th className="text-right">Value</th>
+               <th>Description</th>
+               <th>Last Updated</th>
+            </tr>
+            </thead>
+            <tbody>
             {eventNodes}
+            </tbody>
          </table>
       );
    }
