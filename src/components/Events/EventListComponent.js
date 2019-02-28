@@ -1,6 +1,15 @@
 import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
 import {Link} from 'react-router-dom';
+import {withStyles} from '@material-ui/core/styles';
+
+const styles = {
+   root: {
+      marginTop: "10px",
+      padding: "5px",
+      background: "#eee"
+   },
+};
 
 class EventListComponent extends Component {
    static propTypes = {
@@ -24,27 +33,29 @@ class EventListComponent extends Component {
          const id = event.id;
 
          return (
-            <div key={key} className="events__event">
-               <Link to={'/events/detail/' + id} className='btn btn-default'>View</Link>
-               {' '}
-               <span style={{textDecoration: event.completed ? 'line-through' : 'none'}}
-                     onClick={() => this.props.toggleEvent(event)}>
-            {event.text}
-          </span>
-               {' '}
-               ({event.time} hours)
-            </div>
+            <tr key={key} className="events__event">
+               <td>
+                  <Link to={'/events/detail/' + id} className='btn btn-default'>View</Link>
+                  {' '}
+                  <div style={{textDecoration: event.completed ? 'line-through' : 'none'}}
+                       onClick={() => this.props.toggleEvent(event)}>
+                     {event.text}
+                  </div>
+               </td>
+               <td>{' '}</td>
+               <td>
+                  ({event.time} hours)
+               </td>
+            </tr>
          );
       });
 
       return (
-         <div className="events__list">
-            <div>
-               {eventNodes}
-            </div>
-         </div>
+         <table>
+            {eventNodes}
+         </table>
       );
    }
 }
 
-export default EventListComponent;
+export default withStyles(styles)(EventListComponent);

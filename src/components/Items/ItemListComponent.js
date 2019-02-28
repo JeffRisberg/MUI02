@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
+import {withStyles} from '@material-ui/core/styles';
+
+const styles = {
+   root: {
+      marginTop: "10px",
+      padding: "5px",
+      background: "#eee"
+   },
+};
 
 class ItemListComponent extends Component {
   static propTypes = {
@@ -65,6 +74,6 @@ class ItemListComponent extends Component {
   }
 }
 
-export default ItemListComponent;
+export default withStyles(styles)(ItemListComponent);
 
 
