@@ -35,7 +35,7 @@ class ItemListComponent extends Component {
 
       if (status.isFetching) {
          return (
-            <div className="items__list">
+            <div>
                Loading
             </div>
          );

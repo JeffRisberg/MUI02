@@ -23,7 +23,7 @@ class EventListComponent extends Component {
 
       if (status.isFetching) {
          return (
-            <div className="events__list">
+            <div>
                Loading
             </div>
          );
