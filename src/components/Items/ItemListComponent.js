@@ -24,7 +24,7 @@ class ItemListComponent extends Component {
       toggleItem: PropTypes.func.isRequired,
    };
 
-   static formatEpochTime(epochTime) {
+   formatEpochTime(epochTime) {
       const date = new Date(Number(epochTime) * 1000);
       const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
       return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
@@ -49,7 +49,7 @@ class ItemListComponent extends Component {
             <TableRow key={key}>
                <TableCell><Link to={'/items/detail/' + id} className='btn btn-default'>View</Link></TableCell>
                <TableCell style={{textDecoration: item.completed ? 'line-through' : 'none'}}
-                   onClick={() => this.props.toggleItem(item)}>
+                          onClick={() => this.props.toggleItem(item)}>
                   {item.name}
                </TableCell>
                <TableCell align='right'>${valueStr}</TableCell>
