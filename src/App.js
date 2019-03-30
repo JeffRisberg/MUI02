@@ -83,7 +83,9 @@ class App extends Component {
                   <Switch>
                      <Route path="/" exact component={Splash}/>
                      <Route path="/items" component={Items}/>
+                     <Route exact path="/items/detail/:id" component={Items}/>
                      <Route path="/events" component={Events}/>
+                     <Route exact path="/events/detail/:id" component={Events}/>
                   </Switch>
                </Router>
                <Footer/>
