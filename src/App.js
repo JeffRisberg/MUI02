@@ -81,10 +81,10 @@ class App extends Component {
                </Router>
                <Router>
                   <Switch>
-                     <Route path="/" exact component={Splash}/>
-                     <Route path="/items" component={Items}/>
+                     <Route exact path="/" component={Splash}/>
+                     <Route exact path="/items" component={Items}/>
                      <Route exact path="/items/detail/:id" component={Items}/>
-                     <Route path="/events" component={Events}/>
+                     <Route exact path="/events" component={Events}/>
                      <Route exact path="/events/detail/:id" component={Events}/>
                   </Switch>
                </Router>
