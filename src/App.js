@@ -48,14 +48,17 @@ const theme = createMuiTheme({
 });
 
 class App extends Component {
+   static propTypes = {
+      history: PropTypes.object.isRequired
+   };
 
    render() {
-      const {classes} = this.props;
+      const {classes, history} = this.props;
 
       return (
          <MuiThemeProvider theme={theme}>
             <Paper className={classes.app}>
-               <Router>
+               <Router history={history}>
                   <AppBar position="static">
                      <Toolbar>
                         <Button>
