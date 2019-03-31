@@ -56,9 +56,9 @@ class App extends Component {
       const {classes, history} = this.props;
 
       return (
-         <MuiThemeProvider theme={theme}>
-            <Paper className={classes.app}>
-               <Router history={history}>
+         <Router history={history}>
+            <MuiThemeProvider theme={theme}>
+               <Paper className={classes.app}>
                   <AppBar position="static">
                      <Toolbar>
                         <Button>
@@ -78,19 +78,17 @@ class App extends Component {
                         </Button>
                      </Toolbar>
                   </AppBar>
-               </Router>
-               <Router>
                   <Switch>
                      <Route exact path="/" component={Splash}/>
                      <Route exact path="/items" component={Items}/>
-                     <Route exact path="/items/detail/:id" component={Items}/>
+                     <Route path="/items/detail/:id" component={Items}/>
                      <Route exact path="/events" component={Events}/>
-                     <Route exact path="/events/detail/:id" component={Events}/>
+                     <Route path="/events/detail/:id" component={Events}/>
                   </Switch>
-               </Router>
-               <Footer/>
-            </Paper>
-         </MuiThemeProvider>
+                  <Footer/>
+               </Paper>
+            </MuiThemeProvider>
+         </Router>
       )
    }
 }

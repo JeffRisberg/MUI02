@@ -10,9 +10,9 @@ import { PropTypes } from 'prop-types';
 
 class ItemFormComponent extends Component {
   static propTypes = {
-    handleSubmit: PropTypes.func.isRequired,
-    reset: PropTypes.func.isRequired,
-    submitHandler: PropTypes.func.isRequired,
+    //handleSubmit: PropTypes.func.isRequired,
+    //reset: PropTypes.func.isRequired,
+    //submitHandler: PropTypes.func.isRequired,
     submitting: PropTypes.bool,
     submitSucceeded: PropTypes.bool,
     error: PropTypes.string,
@@ -24,13 +24,25 @@ class ItemFormComponent extends Component {
     error: '',
   };
 
+  handleSubmit() {
+     console.log("handleSubmit");
+  }
+
+  submitHandler() {
+     console.log("submitHandler");
+  }
+
+  deleteHandler() {
+     console.log("deleteHandler");
+  }
+
   componentDidMount() {
-    const { fetchHandler } = this.props;
-    fetchHandler(this.props.match.params.id);
+    //const { fetchHandler } = this.props;
+    //fetchHandler(this.props.match.params.id);
   }
 
   componentWillUnmount() {
-    this.props.reset();
+    //this.props.reset();
   }
 
   render() {
@@ -38,7 +50,7 @@ class ItemFormComponent extends Component {
 
     return (
       <div className="items__detail">
-        <form onSubmit={this.props.handleSubmit(this.props.submitHandler)}>
+        <form onSubmit={this.handleSubmit(this.submitHandler)}>
           <div>
             <label>Name:</label>
             <div>
@@ -58,7 +70,7 @@ class ItemFormComponent extends Component {
             <button type="submit" className="btn btn-default">Submit</button>
           </div>
           <div>
-            <button onClick={(e) => this.props.deleteHandler(e, this.props.match.params.id)}
+            <button onClick={(e) => this.deleteHandler(e, this.props.match.params.id)}
               className="btn btn-default">
               Delete
             </button>
