@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
-import {HashRouter as Router, NavLink, Route, Switch} from 'react-router-dom';
+import {Router, NavLink, Route, Switch} from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Footer from './components/Footer';
@@ -49,6 +49,7 @@ const theme = createMuiTheme({
 
 class App extends Component {
    static propTypes = {
+      classes: PropTypes.object,
       history: PropTypes.object.isRequired
    };
 
