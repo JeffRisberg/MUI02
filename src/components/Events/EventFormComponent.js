@@ -43,12 +43,13 @@ class EventFormComponent extends Component {
    }
 
    componentWillUnmount() {
-      //this.props.reset();
+      this.props.reset();
    }
 
    render() {
       const messageClass = this.props.error ? 'form-error-copy' : 'form-label';
 
+      console.log(this.props);
       return (
          <div className="items__detail">
             <form onSubmit={this.handleSubmit(this.submitHandler)}>
