@@ -21,7 +21,7 @@ const validate = (values) => {
 class EventFormContainer extends Component {
    render() {
       return (<div>
-         <EventFormComponent fetchHandler={fetchItem}></EventFormComponent>
+         <EventFormComponent fetchHandler={fetchHandler}></EventFormComponent>
       </div>)
    }
 }

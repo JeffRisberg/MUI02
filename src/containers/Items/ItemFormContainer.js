@@ -6,7 +6,7 @@ import ItemFormComponent from '../../components/Items/ItemFormComponent';
 class ItemFormContainer extends Component {
     render() {
         return (<div>
-            <ItemFormComponent fetchHandler={fetchItem}></ItemFormComponent>
+            <ItemFormComponent fetchHandler={fetchHandler}></ItemFormComponent>
         </div>)
     }
 }
