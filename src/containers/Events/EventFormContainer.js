@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { forms } from '../../constants';
 import { fetchEvent, saveEvent, deleteEvent } from '../../actions/events';
 import EventFormComponent from '../../components/Events/EventFormComponent';
+import {fetchItem} from "../../actions/items";
 
 const validate = (values) => {
   const errors = {};
@@ -20,7 +21,7 @@ const validate = (values) => {
 class EventFormContainer extends Component {
    render() {
       return (<div>
-         <EventFormComponent></EventFormComponent>
+         <EventFormComponent fetchHandler={fetchItem}></EventFormComponent>
       </div>)
    }
 }
