@@ -11,10 +11,10 @@
    },
    "description": "Material To-do List",
    "dependencies": {
-      "@material-ui/core": "^3.9.3",
-      "@material-ui/icons": "^3.0.2",
-      "@material-ui/styles": "^3.0.0-alpha.9",
-      "cross-fetch": "^3.0.2",
+      "@material-ui/core": "^4.0.0",
+      "@material-ui/icons": "^4.0.0",
+      "@material-ui/styles": "^4.0.0",
+      "cross-fetch": "^3.0.3",
       "history": "^4.9.0",
       "mini-css-extract-plugin": "^0.6.0",
       "query-string": "^6.5.0",
@@ -31,7 +31,7 @@
    "devDependencies": {
       "babel-core": "^6.26.3",
       "babel-eslint": "^8.2.6",
-      "babel-jest": "^24.7.1",
+      "babel-jest": "^24.8.0",
       "babel-loader": "^7.1.5",
       "babel-plugin-module-resolver": "^3.1.3",
       "babel-plugin-transform-class-properties": "^6.24.1",
@@ -45,8 +45,8 @@
       "nconf": "^0.10.0",
       "nedb": "^1.8.0",
       "react-addons-test-utils": "^15.6.2",
-      "react-hot-loader": "^4.8.6",
-      "webpack": "^4.31.0",
+      "react-hot-loader": "^4.8.8",
+      "webpack": "^4.32.1",
       "webpack-cli": "^3.3.2"
    },
    "repository": {
