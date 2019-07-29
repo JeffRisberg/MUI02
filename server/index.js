@@ -3,9 +3,10 @@ var globSync = require('glob').sync;
 var express = require('express');
 var app = express();
 
+const ROOT = './';
 var mocks = globSync('./mocks/**/*.js', {cwd: __dirname}).map(require);
 
-const PATH_DIST = path.resolve(__dirname, '../dist');
+const PATH_DIST = path.resolve(__dirname, ROOT, 'dist');
 const PATH_PUBLIC = path.resolve(__dirname, ROOT, 'public');
 
 app.use('/', express.static(PATH_PUBLIC));
