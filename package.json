@@ -46,8 +46,8 @@
       "nedb": "^1.8.0",
       "react-addons-test-utils": "^15.6.2",
       "react-hot-loader": "^4.12.10",
-      "webpack": "^4.39.1",
-      "webpack-cli": "^3.3.6"
+      "webpack": "^4.39.2",
+      "webpack-cli": "^3.3.7"
    },
    "repository": {
       "type": "git",
