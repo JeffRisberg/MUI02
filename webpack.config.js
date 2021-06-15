@@ -16,9 +16,12 @@ module.exports = {
                 test: /\.scss$/,
                 use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
             },
-            {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"},
-            {test: /\.jsx$/, exclude: /node_modules/, loader: "babel-loader"},
-            {test: /\.(jpe?g|png|gif|svg)$/i, loader: "file-loader?name=/public/icons/[name].[ext]"}
+            {test: /\.js$/, exclude: /node_modules/, 
+             use: ["babel-loader"]},
+            {test: /\.jsx$/, exclude: /node_modules/, 
+             use: ["babel-loader"]},
+            {test: /\.(jpe?g|png|gif|svg)$/i,
+             use: ["file-loader?name=/public/icons/[name].[ext]"]}
         ]
     },
     plugins: [
