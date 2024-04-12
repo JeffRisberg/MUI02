@@ -1,4 +1,3 @@
-import fetch from 'cross-fetch';
 import { push } from 'react-router-redux';
 import { ActionTypes as types, forms } from '../constants';
 

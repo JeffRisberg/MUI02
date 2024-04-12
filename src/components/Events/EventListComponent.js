@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
 import {Link} from 'react-router-dom';
-import {withStyles} from '@material-ui/core/styles';
 
 const styles = {
    root: {
@@ -67,4 +66,4 @@ class EventListComponent extends Component {
    }
 }
 
-export default withStyles(styles)(EventListComponent);
+export default EventListComponent;
