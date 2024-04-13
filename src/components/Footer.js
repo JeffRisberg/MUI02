@@ -1,22 +1,22 @@
 import React from 'react';
+import Typography from "@mui/material/Typography";
 
 const styles = {
-    root: {
-        marginTop: "10px",
-        padding: "5px",
-        background: "#eee"
-    },
+   root: {
+      marginTop: '10px',
+      padding: '6px',
+      background: '#eee'
+   },
 };
 
-function Footer(props) {
-    const {classes} = props;
-    const spacing = 16;
+export function Footer(props) {
+   const {classes} = props;
 
-    return (
-        <div className={classes.root}>
-            MUI02
-        </div>
-    );
+   return (
+      <div>
+         <Typography>
+            Example project using React Material UI
+         </Typography>
+      </div>
+   );
 }
-
-export default Footer;

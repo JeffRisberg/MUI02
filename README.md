@@ -1,3 +1,23 @@
-Material To-do List
+# MUI02
 
-A To-do List built with React, Redux, and Material-UI
+Event and Item List manager built with React, Material-UI 5, and Redux-Toolkit, based on RE03.
+
+
+## To build
+
+```sh
+npm run webpack-watch
+```
+
+## to Use
+
+In a different window, start the server
+
+### Node
+
+```sh
+npm install
+npm start
+```
+
+And visit <http://localhost:3000/>. Try opening multiple tabs!

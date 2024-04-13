@@ -6,7 +6,7 @@
       "start": "node server",
       "postinstall": "webpack",
       "webpack": "webpack",
-      "webpack-watch": "webpack --watch --colors",
+      "webpack-watch": "webpack --watch",
       "test": "jest"
    },
    "description": "Material To-do List",

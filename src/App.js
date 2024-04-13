@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import Paper from '@mui/material/Paper';
-import Footer from './components/Footer';
+import {Footer} from './components/Footer';
 import Items from './views/Items';
 import Events from './views/Events';
 
@@ -73,4 +73,4 @@ class App extends Component {
    }
 }
 
-export default withStyles(styles)(App);
+export default App;
