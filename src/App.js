@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
-import {PropTypes} from 'prop-types';
-import {Route, BrowserRouter, Routes} from 'react-router-dom';
+import React from 'react';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Paper from '@mui/material/Paper';
+import {Navigation} from "./components/Navigation";
 import {Footer} from './components/Footer';
 import Items from './views/Items';
 import Events from './views/Events';
+import Home from "./views/Home";
 
 import lightBlue from '@mui/material/colors/lightBlue';
 import grey from '@mui/material/colors/grey';
 import {createTheme} from '@mui/material/styles';
-import {Home} from "@mui/icons-material";
 
 const styles = {
    root: {
@@ -48,29 +48,20 @@ const theme = createTheme({
    },
 });
 
-class App extends Component {
-   static propTypes = {
-      classes: PropTypes.object,
-      history: PropTypes.object.isRequired
-   };
-
-   render() {
-      const {classes, history} = this.props;
-
-      return (
-         <BrowserRouter>
-            <Paper>
-               <Navigation/>
-               <Routes>
-                  <Route path="/"  element={<Home />} />
-                  <Route path="items" element={<Items />} />
-                  <Route path="events" element={<Events />} />
-               </Routes>
-               <Footer/>
-            </Paper>
-         </BrowserRouter>
-      )
-   }
+function App() {
+   return (
+      <BrowserRouter>
+         <Paper>
+            <Navigation/>
+            <Routes>
+               <Route path="/" element={<Home/>}/>
+               <Route path="items" element={<Items/>}/>
+               <Route path="events" element={<Events/>}/>
+            </Routes>
+            <Footer/>
+         </Paper>
+      </BrowserRouter>
+   )
 }
 
 export default App;
