@@ -27,6 +27,7 @@ module.exports = (app) => {
 
   eventsRouter.post('/', function (req, res) {
     // Look for the most recently created record
+      console.log("event post")
     eventsDB.find({}).sort({ id: -1 }).limit(1).exec(function (err, events) {
 
       if (events.length != 0)
