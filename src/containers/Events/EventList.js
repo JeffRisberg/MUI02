@@ -4,30 +4,44 @@ import { DataGrid } from '@mui/x-data-grid';
 
 import {createEvent} from "./eventsSlice";
 import { fetchEventData } from './eventsSlice';
+import {Button} from "@mui/material";
 
+
+function eventClick(evt) {
+   console.log(evt);
+}
 
 const columns = [
-   { field: 'id', headerName: 'ID', width: 45 },
    {
-      field: 'time',
-      headerName: 'Time',
-      width: 150,
-      editable: true,
+      field: 'id',
+      headerName: '',
+      width: 90,
+      renderCell: (params => (
+         <strong>
+            <Button
+               variant="contained"
+               size="small"
+               style={{marginLeft: 16}}
+               tabIndex={params.hasFocus ? 0 : -1}
+               onClick={eventClick}
+            >
+               View
+            </Button>
+         </strong>
+      ))
    },
    {
       field: 'text',
       headerName: 'Text',
       width: 150,
-      editable: true,
+      editable: false,
    },
-   // {
-   //    field: 'fullName',
-   //    headerName: 'Full name',
-   //    description: 'This column has a value getter and is not sortable.',
-   //    sortable: false,
-   //    width: 160,
-   //    valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
-   // },
+   {
+      field: 'time',
+      headerName: 'Time',
+      width: 150,
+      editable: false,
+   }
 ];
 
 export function EventList() {
@@ -60,7 +74,6 @@ export function EventList() {
                      },
                   }}
                   pageSizeOptions={[5]}
-                  checkboxSelection
                   disableRowSelectionOnClick
                />
             </div>

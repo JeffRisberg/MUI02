@@ -4,13 +4,42 @@ import { DataGrid } from '@mui/x-data-grid';
 
 import {create} from "./itemsSlice";
 import { fetchItemData } from './itemsSlice';
+import {Button} from "@mui/material";
+
+function itemClick(evt) {
+   console.log(evt);
+}
+
+function formatEpochTime(epochTime) {
+   const date = new Date(Number(epochTime) * 1000);
+   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+   return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+}
+
 
 const columns = [
-   { field: 'id', headerName: 'ID', width: 45 },
+   {
+      field: 'id',
+      headerName: '',
+      width: 90,
+      renderCell: (params => (
+         <strong>
+            <Button
+               variant="contained"
+               size="small"
+               style={{marginLeft: 16}}
+               tabIndex={params.hasFocus ? 0 : -1}
+               onClick={itemClick}
+            >
+               View
+            </Button>
+         </strong>
+      ))
+   },
    {
       field: 'name',
       headerName: 'Name',
-      width: 100,
+      width: 150,
       editable: true,
    },
    {
@@ -18,6 +47,7 @@ const columns = [
       headerName: 'Value',
       width: 75,
       editable: true,
+      align: 'right'
    },
    {
       field: 'description',
@@ -30,15 +60,9 @@ const columns = [
       headerName: 'Last updated',
       width: 150,
       editable: true,
-   },
-   // {
-   //    field: 'fullName',
-   //    headerName: 'Full name',
-   //    description: 'This column has a value getter and is not sortable.',
-   //    sortable: false,
-   //    width: 160,
-   //    valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
-   // },
+      valueGetter: (value) =>
+         formatEpochTime(value.value)
+   }
 ];
 
 export function ItemList() {
@@ -71,7 +95,6 @@ export function ItemList() {
                      },
                   }}
                   pageSizeOptions={[5]}
-                  checkboxSelection
                   disableRowSelectionOnClick
                />
             </div>
