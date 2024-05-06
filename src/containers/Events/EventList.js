@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import { DataGrid } from '@mui/x-data-grid';
 
-import {createEvent} from "./eventsSlice";
+import { postEventData } from "./eventsSlice";
 import { fetchEventData } from './eventsSlice';
 import {Button} from "@mui/material";
 
@@ -79,7 +79,7 @@ export function EventList() {
             </div>
          ) : 'No events found'}
          <button
-            onClick={() => dispatch(createEvent())}
+            onClick={() => dispatch(postEventData())}
          >
             Add New
          </button>

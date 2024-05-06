@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import {ActionTypes as types} from "../../constants";
 
 
 // Define the async thunk for fetching item data
@@ -12,41 +13,39 @@ export const fetchItemData = createAsyncThunk('items/fetchItemData', async () =>
 });
 
 
+// Define the async thunk for creating item data
+export const postItemData = createAsyncThunk("events/postItemData", () => {
+   const item = {
+      id: 2,
+      text: "Big Dog",
+      createdAt: "4 Dec 2023"
+   }
+
+   return fetch('/api/items', {
+      method: 'POST',
+      headers: {
+         'Accept': 'application/json',
+         'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({item: item})
+   })
+      .then(response => response.json())
+      .then((json) => {
+         dispatch({
+            type: types.PERSIST_ITEM_SUCCESS,
+            events: json.data,
+            meta: {
+               log: ['item changed']
+            }
+         });
+         dispatch(fetchItemData());
+      });
+})
+
+
 export const itemsSlice = createSlice({
    name: 'items',
    initialState: { data: null, loading: false, error: null },
-   //initialState: {
-      //value: [
-         // {
-         //    id: 1,
-         //    name: "Raptor",
-         //    value: "999",
-         //    description: "mean",
-         //    lastUpdated: "4 Dec 2023"
-         // },
-         // {
-         //    id: 2,
-         //    name: "Furby",
-         //    value: "10",
-         //    description: "Playful",
-         //    lastUpdated: "4 Dec 2023"
-         // },
-         // {
-         //    id: 3,
-         //    name: "Terran Marine",
-         //    value: "100",
-         //    description: "Semper Fi",
-         //    lastUpdated: "4 Dec 2023"
-         // },
-         // {
-         //    id: 4,
-         //    name: "Protoss Zealot",
-         //    value: "150",
-         //    description: "My life for Aiur!",
-         //    lastUpdated: "4 Dec 2023"
-         // },
-     // ],
-   //},
    reducers: {
       // fetch: (state) => {
       //    console.log("fetching state.value")
@@ -54,10 +53,11 @@ export const itemsSlice = createSlice({
       // select: (state, action) => {
       //    state.selected = action.payload
       // },
-      // create: (state) => {
-      //    console.log("Creating content")
-      //    var count = state.value.length;
-      // }
+      create: (state) => {
+          console.log("Creating content")
+          //var count = state.data.length();
+          console.log(state.data)
+      }
    },
    extraReducers: (builder) => {
       builder
@@ -78,6 +78,6 @@ export const itemsSlice = createSlice({
 // Action creators are generated for each case reducer function
 //export const {fetch} = itemsSlice.actions
 //export const {select} = itemsSlice.actions
-//export const {create} = itemsSlice.actions
+export const {create} = itemsSlice.actions
 
 export default itemsSlice.reducer

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import { DataGrid } from '@mui/x-data-grid';
 
-import {create} from "./itemsSlice";
+import { postItemData } from "./itemsSlice";
 import { fetchItemData } from './itemsSlice';
 import {Button} from "@mui/material";
 
@@ -100,7 +100,7 @@ export function ItemList() {
             </div>
          ) : 'No items found'}
          <button
-            onClick={() => dispatch(create())}
+            onClick={() => dispatch(postItemData())}
          >
             Add New
          </button>
