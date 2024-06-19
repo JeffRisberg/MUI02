@@ -45,7 +45,7 @@
       "nedb": "^1.8.0",
       "react-scripts": "^5.0.1",
       "webpack": "^5.92.0",
-      "webpack-cli": "^5.1.4"
+      "webpack-cli": "^5.1.0"
    },
    "repository": {
       "type": "git",
