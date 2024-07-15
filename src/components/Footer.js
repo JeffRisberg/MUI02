@@ -15,7 +15,7 @@ export function Footer(props) {
    return (
       <div>
          <Typography>
-            Example project using React Material UI
+            Example project using React Material UI 5
          </Typography>
       </div>
    );
