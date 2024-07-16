@@ -1,5 +1,6 @@
 import {createAction, createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {ActionTypes as types} from "../../constants";
+import {createItem} from "../Items/itemsSlice";
 
 
 // Define the async thunk for fetching event data
@@ -14,7 +15,7 @@ export const fetchEventData = createAsyncThunk('events/fetchEventData', async ()
 
 
 // Define the async thunk for creating event data
-export const postEventData = createAsyncThunk("events/postEventData", () => {
+export const createEvent = createAsyncThunk("events/createEvent", () => {
    const event = {
       id: 2,
       time: "1200",
@@ -64,9 +65,6 @@ export const eventsSlice = createSlice({
       },
       extraReducers: (builder) => {
          builder
-            .addCase(createEvent.pending, (state) => {
-               console.log("creating new event")
-            })
             .addCase(fetchEventData.pending, (state) => {
                state.loading = true;
             })
@@ -77,6 +75,9 @@ export const eventsSlice = createSlice({
             .addCase(fetchEventData.rejected, (state, action) => {
                state.loading = false;
                state.error = action.error.message;
+            })
+            .addCase(createEvent.pending, (state) => {
+               state.loading = true;
             });
       }
    })

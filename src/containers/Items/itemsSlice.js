@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import {createSlice, createAsyncThunk, createAction} from '@reduxjs/toolkit';
 import {ActionTypes as types} from "../../constants";
 
 
@@ -13,8 +13,8 @@ export const fetchItemData = createAsyncThunk('items/fetchItemData', async () =>
 });
 
 
-// Define the async thunk for creating item data
-export const postItemData = createAsyncThunk("events/postItemData", () => {
+// Define the async thunk for creating item
+export const createItem = createAsyncThunk("items/createItem", () => {
    const item = {
       id: 2,
       text: "Big Dog",
@@ -41,6 +41,9 @@ export const postItemData = createAsyncThunk("events/postItemData", () => {
          dispatch(fetchItemData());
       });
 })
+
+
+export const toggleItem = createAction("items/toggle")
 
 
 export const itemsSlice = createSlice({
@@ -71,6 +74,9 @@ export const itemsSlice = createSlice({
          .addCase(fetchItemData.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error.message;
+         })
+         .addCase(createItem.pending, (state) => {
+            state.loading = true;
          });
    }
 });
