@@ -6,6 +6,7 @@ Event and Item List manager built with React, Material-UI 5, and Redux-Toolkit, 
 ## To build
 
 ```sh
+npm install
 npm run webpack-watch
 ```
 
@@ -16,7 +17,6 @@ In a different window, start the server
 ### Node
 
 ```sh
-npm install
 npm start
 ```
 
