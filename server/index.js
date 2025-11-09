@@ -12,7 +12,7 @@ const PATH_PUBLIC = path.resolve(__dirname, ROOT, 'public');
 app.use('/', express.static(PATH_PUBLIC));
 app.use(express.static(PATH_DIST));
 
-var nedb = require('nedb');
+var nedb = require('@seald-io/nedb');
 
 app.itemsDB = new nedb({filename: 'db-content/items', autoload: true});
 app.eventsDB = new nedb({filename: 'db-content/events', autoload: true});

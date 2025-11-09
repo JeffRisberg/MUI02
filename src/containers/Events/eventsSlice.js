@@ -1,47 +1,35 @@
 import {createAction, createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import {ActionTypes as types} from "../../constants";
-import {createItem} from "../Items/itemsSlice";
 
 
 // Define the async thunk for fetching event data
 export const fetchEventData = createAsyncThunk('events/fetchEventData', async () => {
-   console.log("fetching from server");
-   const response = await fetch('http://localhost:3000/api/events');
-   console.log(response);
+   const response = await fetch('/api/events');
    const jsonData = await response.json();
-   console.log(jsonData);
    return jsonData;
 });
 
 
 // Define the async thunk for creating event data
-export const createEvent = createAsyncThunk("events/createEvent", () => {
-   const event = {
+export const createEvent = createAsyncThunk("events/createEvent", async (event, { dispatch }) => {
+   const newEvent = event || {
       id: 2,
       time: "1200",
       text: "Lunch",
       createdAt: "4 Dec 2023"
-   }
+   };
 
-   return fetch('/api/events', {
+   const response = await fetch('/api/events', {
       method: 'POST',
       headers: {
          'Accept': 'application/json',
          'Content-Type': 'application/json'
       },
-      body: JSON.stringify({event: event})
-   })
-      .then(response => response.json())
-      .then((json) => {
-         dispatch({
-            type: types.PERSIST_EVENT_SUCCESS,
-            events: json.data,
-            meta: {
-               log: ['event changed']
-            }
-         });
-         dispatch(fetchEventData());
-      });
+      body: JSON.stringify({event: newEvent})
+   });
+
+   const json = await response.json();
+   await dispatch(fetchEventData());
+   return json;
 })
 
 

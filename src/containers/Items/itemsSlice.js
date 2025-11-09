@@ -1,45 +1,34 @@
 import {createSlice, createAsyncThunk, createAction} from '@reduxjs/toolkit';
-import {ActionTypes as types} from "../../constants";
 
 
 // Define the async thunk for fetching item data
 export const fetchItemData = createAsyncThunk('items/fetchItemData', async () => {
-   console.log("fetching from server");
-   const response = await fetch('http://localhost:3000/api/items');
-   console.log(response);
+   const response = await fetch('/api/items');
    const jsonData = await response.json();
-   console.log(jsonData);
    return jsonData;
 });
 
 
 // Define the async thunk for creating item
-export const createItem = createAsyncThunk("items/createItem", () => {
-   const item = {
+export const createItem = createAsyncThunk("items/createItem", async (item, { dispatch }) => {
+   const newItem = item || {
       id: 2,
       text: "Big Dog",
       createdAt: "4 Dec 2023"
-   }
+   };
 
-   return fetch('/api/items', {
+   const response = await fetch('/api/items', {
       method: 'POST',
       headers: {
          'Accept': 'application/json',
          'Content-Type': 'application/json'
       },
-      body: JSON.stringify({item: item})
-   })
-      .then(response => response.json())
-      .then((json) => {
-         dispatch({
-            type: types.PERSIST_ITEM_SUCCESS,
-            events: json.data,
-            meta: {
-               log: ['item changed']
-            }
-         });
-         dispatch(fetchItemData());
-      });
+      body: JSON.stringify({item: newItem})
+   });
+
+   const json = await response.json();
+   await dispatch(fetchItemData());
+   return json;
 })
 
 
