@@ -1,17 +1,13 @@
 import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import { DataGrid } from '@mui/x-data-grid';
+import { useNavigate } from 'react-router-dom';
 
 import { fetchEventData } from './eventsSlice';
 import { createEvent } from "./eventsSlice";
 import {Button} from "@mui/material";
 
-
-function eventClick(evt) {
-   console.log(evt);
-}
-
-const columns = [
+const createColumns = (navigate) => [
    {
       field: 'id',
       headerName: '',
@@ -23,7 +19,7 @@ const columns = [
                size="small"
                style={{marginLeft: 16}}
                tabIndex={params.hasFocus ? 0 : -1}
-               onClick={eventClick}
+               onClick={() => navigate(`/events/${params.row.id}`)}
             >
                View
             </Button>
@@ -46,10 +42,8 @@ const columns = [
 
 export function EventList() {
    const {data, loading, error} = useSelector((state) => state.events)
-   console.log(data);
-   console.log(loading);
-   console.log(error);
    const dispatch = useDispatch()
+   const navigate = useNavigate()
 
    useEffect(() => {
       dispatch(fetchEventData());
@@ -65,7 +59,7 @@ export function EventList() {
             <div>
                <DataGrid
                   rows={data.data}
-                  columns={columns}
+                  columns={createColumns(navigate)}
                   initialState={{
                      pagination: {
                         paginationModel: {

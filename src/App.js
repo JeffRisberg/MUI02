@@ -6,6 +6,8 @@ import {Footer} from './components/Footer';
 import Items from './views/Items';
 import Events from './views/Events';
 import Home from "./views/Home";
+import ItemDetail from './views/ItemDetail';
+import EventDetail from './views/EventDetail';
 
 import lightBlue from '@mui/material/colors/lightBlue';
 import grey from '@mui/material/colors/grey';
@@ -56,7 +58,9 @@ function App() {
             <Routes>
                <Route path="/" element={<Home/>}/>
                <Route path="items" element={<Items/>}/>
+               <Route path="items/:id" element={<ItemDetail/>}/>
                <Route path="events" element={<Events/>}/>
+               <Route path="events/:id" element={<EventDetail/>}/>
             </Routes>
             <Footer/>
          </Paper>

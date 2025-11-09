@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import { DataGrid } from '@mui/x-data-grid';
+import { useNavigate } from 'react-router-dom';
 
 import { fetchItemData } from './itemsSlice';
 import { createItem } from "./itemsSlice";
 import {Button} from "@mui/material";
-
-function itemClick(evt) {
-   console.log(evt);
-}
 
 function formatEpochTime(epochTime) {
    const date = new Date(Number(epochTime) * 1000);
@@ -16,8 +13,7 @@ function formatEpochTime(epochTime) {
    return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
 }
 
-
-const columns = [
+const createColumns = (navigate) => [
    {
       field: 'id',
       headerName: '',
@@ -29,7 +25,7 @@ const columns = [
                size="small"
                style={{marginLeft: 16}}
                tabIndex={params.hasFocus ? 0 : -1}
-               onClick={itemClick}
+               onClick={() => navigate(`/items/${params.row.id}`)}
             >
                View
             </Button>
@@ -67,10 +63,8 @@ const columns = [
 
 export function ItemList() {
    const {data, loading, error} = useSelector((state) => state.items)
-   console.log(data);
-   console.log(loading);
-   console.log(error);
    const dispatch = useDispatch()
+   const navigate = useNavigate()
 
    useEffect(() => {
       dispatch(fetchItemData());
@@ -86,7 +80,7 @@ export function ItemList() {
             <div>
                <DataGrid
                   rows={data.data}
-                  columns={columns}
+                  columns={createColumns(navigate)}
                   initialState={{
                      pagination: {
                         paginationModel: {

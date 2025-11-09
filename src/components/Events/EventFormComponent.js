@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
-import {PropTypes} from 'prop-types';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { TextField, Button, Card, CardContent, Typography } from '@mui/material';
 
 /**
  * Event Editing Form
@@ -8,79 +9,139 @@ import {PropTypes} from 'prop-types';
  * @since May 2017
  */
 
-class EventFormComponent extends Component {
-   static propTypes = {
-      fetchHandler: PropTypes.func.isRequired,
-      //handleSubmit: PropTypes.func.isRequired,
-      //reset: PropTypes.func.isRequired,
-      //submitHandler: PropTypes.func.isRequired,
-      submitting: PropTypes.bool,
-      submitSucceeded: PropTypes.bool,
-      error: PropTypes.string,
+function EventFormComponent() {
+   const { id } = useParams();
+   const navigate = useNavigate();
+   const [event, setEvent] = useState(null);
+   const [loading, setLoading] = useState(true);
+   const [formData, setFormData] = useState({
+      text: '',
+      time: ''
+   });
+
+   useEffect(() => {
+      if (id) {
+         fetch(`/api/events/${id}`)
+            .then(response => response.json())
+            .then(json => {
+               setEvent(json.data);
+               setFormData({
+                  text: json.data.text || '',
+                  time: json.data.time || ''
+               });
+               setLoading(false);
+            })
+            .catch(error => {
+               console.error('Error fetching event:', error);
+               setLoading(false);
+            });
+      }
+   }, [id]);
+
+   const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormData(prev => ({
+         ...prev,
+         [name]: value
+      }));
    };
 
-   static defaultProps = {
-      submitting: false,
-      submitSucceeded: false,
-      error: '',
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      const updatedEvent = {
+         ...event,
+         text: formData.text.trim(),
+         time: formData.time
+      };
+
+      fetch(`/api/events/${id}`, {
+         method: 'PUT',
+         headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+         },
+         body: JSON.stringify({ event: updatedEvent })
+      })
+         .then(response => response.json())
+         .then(() => {
+            navigate('/events');
+         })
+         .catch(error => {
+            console.error('Error updating event:', error);
+         });
    };
 
-   handleSubmit() {
-      console.log("handleSubmit");
+   const handleDelete = (e) => {
+      e.preventDefault();
+      if (window.confirm('Are you sure you want to delete this event?')) {
+         fetch(`/api/events/${id}`, {
+            method: 'DELETE',
+            headers: {
+               'Accept': 'application/json',
+               'Content-Type': 'application/json'
+            }
+         })
+            .then(() => {
+               navigate('/events');
+            })
+            .catch(error => {
+               console.error('Error deleting event:', error);
+            });
+      }
+   };
+
+   if (loading) {
+      return <div>Loading...</div>;
    }
 
-   submitHandler() {
-      console.log("submitHandler");
+   if (!event) {
+      return <div>Event not found</div>;
    }
 
-   deleteHandler() {
-      console.log("deleteHandler");
-   }
-
-   componentDidMount() {
-      const {fetchHandler} = this.props;
-      fetchHandler(this.props.match.params.id);
-   }
-
-   componentWillUnmount() {
-      this.props.reset();
-   }
-
-   render() {
-      const messageClass = this.props.error ? 'form-error-copy' : 'form-label';
-
-      console.log(this.props);
-      return (
-         <div className="items__detail">
-            <form onSubmit={this.handleSubmit(this.submitHandler)}>
-               <div>
-                  <label>Name:</label>
-                  <div>
-                  </div>
-               </div>
-               <div>
-                  <label>Value:</label>
-                  <div>
-                  </div>
-               </div>
-               <div>
-                  <label>Description:</label>
-                  <div>
-                  </div>
-               </div>
-               <div>
-                  <button type="submit" className="btn btn-default">Submit</button>
-               </div>
-               <div>
-                  <button onClick={(e) => this.deleteHandler(e, this.props.match.params.id)}
-                          className="btn btn-default">
+   return (
+      <Card style={{ maxWidth: 600, margin: '20px auto' }}>
+         <CardContent>
+            <Typography variant="h5" component="h2" gutterBottom>
+               Edit Event
+            </Typography>
+            <form onSubmit={handleSubmit}>
+               <TextField
+                  fullWidth
+                  label="Text"
+                  name="text"
+                  value={formData.text}
+                  onChange={handleChange}
+                  margin="normal"
+                  required
+               />
+               <TextField
+                  fullWidth
+                  label="Time (0000-2359)"
+                  name="time"
+                  value={formData.time}
+                  onChange={handleChange}
+                  margin="normal"
+                  required
+                  inputProps={{
+                     pattern: "[0-9]{4}",
+                     maxLength: 4
+                  }}
+               />
+               <div style={{ marginTop: 20, display: 'flex', gap: 10 }}>
+                  <Button type="submit" variant="contained" color="primary">
+                     Save
+                  </Button>
+                  <Button onClick={() => navigate('/events')} variant="outlined">
+                     Cancel
+                  </Button>
+                  <Button onClick={handleDelete} variant="contained" color="error">
                      Delete
-                  </button>
+                  </Button>
                </div>
             </form>
-         </div>
-      );
-   }
+         </CardContent>
+      </Card>
+   );
 }
 
 export default EventFormComponent;
